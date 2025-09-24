@@ -8,14 +8,15 @@ import SubmitButton from './SubmitButton.js';
 
 function App() {
   const [qNumber, setQNumber] = useState(0);
+  function handleClick() {
+    setQNumber(qNumber + 1);
+  }
   return (
     <div>
         <TopBar>
           <Question qNumber={qNumber}/>
         </TopBar>
-        <BackFunction appear={qNumber != 0}/>
         <SubmitButton finished={qNumber == 4}/>
-        <NextButton appear={qNumber != 4}/>
     </div>
   );
 }

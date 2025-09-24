@@ -1,13 +1,28 @@
+import { useState } from 'react';
+import questionInfo from './questionInfo.js';
+
 export default function TopBar({children}) {
-    const q_topics = [
-        {id: 1, text: "Sleep", event: {evtHandler1}}, 
-        {id: 2, text: "Exercise", event: {evtHandler2}}, 
-        {id: 3, text: "Work", event: {evtHandler3}}, 
-        {id: 4, text: "Hobby", event: {evtHandler4}}];
+    const [index, setIndex] = useState(0);
+
+    function handlerBack() {
+        setIndex(index - 1)
+    }
+
+    function handlerNext() {
+        setIndex(index + 1)
+    }
+
+    function handlerSet({tNumber}) {
+        setIndex(tNumber)
+    }
+
     return (
         <div>
-            {q_topics.map(topic => <button onClick={topic.event()}>{topic.id + ". " + topic.text}</button>)}
-            <children qNumber={topic.id}/>
+            {q_topics.map(topic => <button>{topic.id + ". " + topic.question}</button>)}
+            <children qNumber={index}/>
+            {qNumber != 0} && <button onClick={handlerBack}>Back</button>
+            {qNumber != 4} && <button onClick={handlerNext}>Next</button>
         </div>
     )
 }
+

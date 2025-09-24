@@ -1,21 +1,18 @@
-export default function Question({qNumber}) {
+import {topics} from './questionInfo.js';
+
+export default function Question({topicNumber}) {
+    const topic = topics[topicNumber];
     return (
         <div>
-            <p>{questions[qNumber]}</p>
+            <p>{topic.question}</p>
+            (topic.selections ? selectQuestion({topic.selections}):
+            <input {...topic.attributes}></input>)
         </div>
     )
 }
 
-const button_questions = [];
-
-const drop_down_questions = [];
-
-const time_questions = [1, 2];
-
-const questions = [
-    "What is your gender?",
-    "What time do you typically go to sleep?",
-    "What time do you typically wake up?"
-];
-
-const gender_answers = ["Female", "Male", "Unbinary", "Other"];
+function selectQuestion({selections}) {
+    return (
+        selections.map((text) => <option>text</option>)
+    )
+}
