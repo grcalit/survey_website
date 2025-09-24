@@ -1,5 +1,5 @@
-export default function BackFunction() {
-    return <button>Back</button>
+export default function BackFunction({appear}) {
+    return appear && <button>Back</button>
 }
 
 function handleClick() {
