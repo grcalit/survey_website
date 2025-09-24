@@ -1,22 +1,36 @@
 import './App.css';
 import Question from './Questions.js';
-import TopBar from './TopBar.js';
-import NextButton from './NextButton.js';
 import { useState } from 'react';
-import BackFunction from './BackButton.js';
-import SubmitButton from './SubmitButton.js';
+import {topics} from './questionInfo.js';
+
 
 function App() {
-  const [qNumber, setQNumber] = useState(0);
-  function handleClick() {
-    setQNumber(qNumber + 1);
+  const [index, setIndex] = useState(0);
+
+  function handlerClick(id) {
+    alert(id)
+    setIndex(id)
   }
+
+  function handlerNext() {
+    setIndex(index + 1)
+  }
+
+  function handlerBack() {
+    setIndex(index - 1)
+  }
+
+
   return (
     <div>
-        <TopBar>
-          <Question qNumber={qNumber}/>
-        </TopBar>
-        <SubmitButton finished={qNumber == 4}/>
+    {topics.map((topic) => (
+      <button onClick={() => {handlerClick(topic.id)}}>
+        {topic.id + '. ' + topic.title}
+      </button>
+    ))}
+    <Question topicId={index}/>
+    {index !== 0 && <button onClick={handlerBack}>Back</button>}
+    {index !== topics.length && <button onClick={handlerNext}>Next</button>}
     </div>
   );
 }
