@@ -1,33 +1,37 @@
 export const topics = 
 [
-    {"id": 1, "title": "Sleeping", "questions": {
-        "q1": {"id": 1,
-        "question": "how do you feel?",
+    {"id": 1, "title": "Sleeping", "questions": 
+        [{"id": 1,
+        "text": "how do you feel?",
         "type_of_question": "select",
-        "selections": ["good", "bad", "okay"]},
+        "options": ["good", "bad", "okay"]},
 
-        "q2": {"id": 2,
-        "question": "what is your age?",
-        "type_of_question": "text",
-        "attributes": 'type="number" min="10" max="100"'},
-
-        "q3": {"id": 3,
-        "question": "what is your name?",
-        "type_of_question": "text"}
-    }}, 
-    {"id": 2, "title": "Exercise", "questions": {
-        "q1": {"id": 1,
-        "question": "how do you feel?",
+        {"id": 2,
+        "text": "what is your age?",
         "type_of_question": "select",
-        "selections": ["good", "bad", "okay"]},
+        "options": ["0-18", "19-30", "30+"]},
 
-        "q2": {"id": 2,
-        "question": "what is your age?",
-        "type_of_question": "text",
-        "attributes": 'type="number" min="10" max="100"'},
+        {"id": 3,
+        "text": "what is your gender?",
+        "type_of_question": "select",
+        "options": ["other", "female", "male"]
+        }
+        ]}, 
+    {"id": 2, "title": "Exercise", "questions": [
+        {"id": 1,
+        "text": "how is your age?",
+        "type_of_question": "select",
+        "options": ["0-18", "19-30", "30+"]},
 
-        "q3": {"id": 3,
-        "question": "what is your name?",
-        "type_of_question": "text"}
-    }}
+        {"id": 2,
+        "text": "what is your gender?",
+        "type_of_question": "select",
+        "options": ["other", "female", "male"]},
+
+        {"id": 3,
+        "text": "how do you feel?",
+        "type_of_question": "select",
+        "options": ["good", "bad", "okay"]
+        }
+    ]}
 ];
