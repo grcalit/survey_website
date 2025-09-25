@@ -11,12 +11,12 @@ export default function Question({topicId}) {
         </div>))
     }
     
-    function sendIt() {
+    function handleSubmit() {
 
     }
 
     return (
-        <form action={sendIt}>
+        <form onSubmit={handleSubmit}>
             {formulateQuestion(qList)}
         </form>
     )
