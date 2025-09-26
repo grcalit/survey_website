@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 export default function Question({topicId}) {
     const qList = topics[topicId-1].questions;
     const [ans, setAns] = useState(" ");
-    const [ansID, setAnsId] = useState(null);
+    const [ansID, setAnsId] = useState("");
 
 
     useEffect(() => {
