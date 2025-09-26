@@ -22,14 +22,14 @@ function App() {
 
   return (
     <div>
-    {topics.map((topic) => (
-      <button onClick={() => {handlerClick(topic.id)}}>
-        {topic.id + '. ' + topic.title}
-      </button>
-    ))}
-    <Question topicId={index}/>
-    {index !== 1 && <button onClick={handlerBack}>Back</button>}
-    {index !== topics.length && <button onClick={handlerNext}>Next</button>}
+      {topics.map((topic) => (
+        <button key={topic.id} onClick={() => {handlerClick(topic.id)}}>
+          {topic.id + '. ' + topic.title}
+        </button>
+      ))}
+      <Question topicId={index}/>
+      {index !== 1 && <button onClick={handlerBack}>Back</button>}
+      {index !== topics.length && <button onClick={handlerNext}>Next</button>}
     </div>
   );
 }
