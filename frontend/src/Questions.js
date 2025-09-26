@@ -11,8 +11,20 @@ export default function Question({topicId}) {
         </div>))
     }
     
-    function handleSubmit() {
+    async function handleSubmit(e) {
+        e.preventDefault();
 
+        const formData = new FormData();
+        for (let ans in e) {
+            formData[ans] = e.ans;
+        }
+
+        const response = await fetch(`https://localhost:3000/topic${topicId}`, {
+            method: "POST",
+            body: JSON.stringify(formData)
+        });
+
+        console.log(response);
     }
 
     return (
