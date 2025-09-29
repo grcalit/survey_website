@@ -2,7 +2,7 @@ package com.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.backend.Entity.Topic1Entity;
+import com.backend.Entity.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -15,8 +15,13 @@ public class Controller {
     public Controller() {}
 
     @PostMapping("/topic1")
-    public String submitTopic1(@RequestBody Topic1Entity topic1Entity) { 
-        return "I have returned with " + topic1Entity.toString();
+    public String submitTopic1(@RequestBody String ans) { 
+        return "From topic 1, I have returned with " + ans;
+    }
+
+    @PostMapping("/topic2")
+    public String submitTopic2(@RequestBody String ans) { 
+        return "From topic 2, I have returned with " + ans;
     }
 
 
