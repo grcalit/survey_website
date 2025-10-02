@@ -15,16 +15,16 @@ public class Controller {
     // private Service2 service2;
     // private Service3 service3;
     // private Service4 service4;
-    // private AccountService accountService;
+    private AccountService accountService;
 
 
     @Autowired
-    public Controller(Service1 service1) { //, Service2 service2, Service3 service3, Service4 service4, AccountService accountService) {
+    public Controller(Service1 service1, AccountService accountService) { //, Service2 service2, Service3 service3, Service4 service4, AccountService accountService) {
         this.service1 = service1;
         // this.service2 = service2;
         // this.service3 = service3;
         // this.service4 = service4;
-        // this.accountService = accountService;
+        this.accountService = accountService;
     }
 
     @GetMapping("/topic1/{id}")
@@ -54,24 +54,6 @@ public class Controller {
         return ResponseEntity.ok(deletedId);
     }
 
-    // @PostMapping("/topic2")
-    // public ResponseEntity<Topic2Entity> submitTopic2(@RequestBody Topic2Entity topic2) { 
-    //     Topic2Entity createdTopic = service2.addAnswer(topic2);
-    //     if (createdTopic == null) {
-    //         return ResponseEntity.status(400).body(topic2);
-    //     }
-    //     return ResponseEntity.ok(createdTopic);
-    // }
-
-    // @GetMapping("/topic2/{id}")
-    // public ResponseEntity<Topic2Entity> getTopic2(@PathVariable Long id) {
-    //     Topic2Entity foundTopic = service2.getAnswer(id);
-    //     if (foundTopic == null) {
-    //         return ResponseEntity.ok().build();
-    //     }
-    //     return ResponseEntity.ok(foundTopic);
-    // }
-
     // @PutMapping("/topic2")
     // public ResponseEntity<Topic2Entity> editTopic(@RequestBody Topic2Entity topic2) {
     //     Topic2Entity editedTopic = service1.editAnswer(topic2);
@@ -88,15 +70,6 @@ public class Controller {
     //         return ResponseEntity.status(400).build();
     //     }
     //     return ResponseEntity.ok(deletedId);
-    // }
-
-    // @PostMapping("/topic3")
-    // public ResponseEntity<Topic3Entity> submitTopic3(@RequestBody Topic3Entity topic3) { 
-    //     Topic3Entity createdTopic = service3.addAnswer(topic3);
-    //     if (createdTopic == null) {
-    //         return ResponseEntity.status(400).body(topic3);
-    //     }
-    //     return ResponseEntity.ok(createdTopic);
     // }
 
     // @GetMapping("/topic3/{id}")
@@ -126,15 +99,6 @@ public class Controller {
     //     return ResponseEntity.ok(deletedId);
     // }
 
-    // @PostMapping("/topic4")
-    // public ResponseEntity<Topic4Entity> submitTopic4(@RequestBody Topic4Entity topic4) { 
-    //     Topic4Entity createdTopic = service4.addAnswer(topic4);
-    //     if (createdTopic == null) {
-    //         return ResponseEntity.status(400).body(topic4);
-    //     }
-    //     return ResponseEntity.ok(createdTopic);
-    // }
-
     // @GetMapping("/topic4/{id}")
     // public ResponseEntity<Topic4Entity> getTopic4(@PathVariable Long id) {
     //     Topic4Entity foundTopic = service4.getAnswer(id);
@@ -162,40 +126,40 @@ public class Controller {
     //     return ResponseEntity.ok(deletedId);
     // }
 
-    // @PostMapping("/account")
-    // public ResponseEntity<Account> addAccount(Account account) {
-    //     Account createdAccount = accountService.addAccount(account);
-    //     if (createdAccount == null) {
-    //         return ResponseEntity.status(400).body(account);
-    //     }
-    //     return ResponseEntity.ok(account);
-    // }
+    @PostMapping("/account")
+    public ResponseEntity<Account> addAccount(@RequestBody Account account) {
+        Account createdAccount = accountService.addAccount(account);
+        if (createdAccount == null) {
+            return ResponseEntity.status(400).body(account);
+        }
+        return ResponseEntity.ok(account);
+    }
 
-    // @GetMapping("/account/{id}")
-    // public ResponseEntity<Account> getAccount(@PathVariable Long id) {
-    //     Account foundAccount = accountService.getAccount(id);
-    //     if (foundAccount == null) {
-    //         return ResponseEntity.status(400).body(foundAccount);
-    //     }
-    //     return ResponseEntity.ok(foundAccount);
-    // }
+    @GetMapping("/account/{id}")
+    public ResponseEntity<Account> getAccount(@PathVariable int id) {
+        Account foundAccount = accountService.getAccount(id);
+        if (foundAccount == null) {
+            return ResponseEntity.status(400).body(foundAccount);
+        }
+        return ResponseEntity.ok(foundAccount);
+    }
 
-    // @PutMapping("/account/{id}")
-    // public ResponseEntity<Account> editAccount(@PathVariable Long id, Account account) {
-    //     Account editedAccount = accountService.editAccount(id, account);
-    //     if (editedAccount == null) {
-    //         return ResponseEntity.status(400).body(account);
-    //     }
-    //     return ResponseEntity.ok(editedAccount);
-    // }
+    @PatchMapping("/account")
+    public ResponseEntity<Account> editAccount(@RequestBody Account account) {
+        Account editedAccount = accountService.editAccount(account);
+        if (editedAccount == null) {
+            return ResponseEntity.status(400).build();
+        }
+        return ResponseEntity.ok(editedAccount);
+    }
 
-    // @DeleteMapping("/account/{id}")
-    // public ResponseEntity<Integer> deleteAccount(@PathVariable Long id) {
-    //     Integer deletedId = accountService.deleteAccount(id);
-    //     if (deletedId == null) {
-    //         return ResponseEntity.status(400).build();
-    //     }
-    //     return ResponseEntity.ok(deletedId);
-    // }
+    @DeleteMapping("/account/{id}")
+    public ResponseEntity<Integer> deleteAccount(@PathVariable int id) {
+        Integer deletedId = accountService.deleteAccount(id);
+        if (deletedId == null) {
+            return ResponseEntity.status(400).build();
+        }
+        return ResponseEntity.ok(deletedId);
+    }
 
 }
