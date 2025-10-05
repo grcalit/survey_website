@@ -13,17 +13,17 @@ import com.backend.Service.*;
 public class Controller {
     private Service1 service1;
     private Service2 service2;
-    // private Service3 service3;
-    // private Service4 service4;
+    private Service3 service3;
+    private Service4 service4;
     private AccountService accountService;
 
 
     @Autowired
-    public Controller(Service1 service1, AccountService accountService, Service2 service2) { //, Service3 service3, Service4 service4, AccountService accountService) {
+    public Controller(Service1 service1, Service2 service2, Service3 service3, Service4 service4, AccountService accountService) {
         this.service1 = service1;
         this.service2 = service2;
-        // this.service3 = service3;
-        // this.service4 = service4;
+        this.service3 = service3;
+        this.service4 = service4;
         this.accountService = accountService;
     }
 
@@ -81,59 +81,59 @@ public class Controller {
         return ResponseEntity.ok(foundTopic);
     }
 
-    // @GetMapping("/topic3/{id}")
-    // public ResponseEntity<Topic3Entity> getTopic3(@PathVariable Long id) {
-    //     Topic3Entity foundTopic = service3.getAnswer(id);
-    //     if (foundTopic == null) {
-    //         return ResponseEntity.ok().build();
-    //     }
-    //     return ResponseEntity.ok(foundTopic);
-    // }
+    @GetMapping("/topic3/{id}")
+    public ResponseEntity<Topic3Entity> getTopic3(@PathVariable int id) {
+        Topic3Entity foundTopic = service3.getAnswer(id);
+        if (foundTopic == null) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.ok(foundTopic);
+    }
 
-    // @PutMapping("/topic3")
-    // public ResponseEntity<Topic3Entity> editTopic(@RequestBody Topic3Entity topic3) {
-    //     Topic3Entity editedTopic = service3.editAnswer(topic3);
-    //     if (editedTopic == null) {
-    //         return ResponseEntity.status(400).body(topic3);
-    //     }
-    //     return ResponseEntity.ok(editedTopic);
-    // }
+    @PutMapping("/topic3")
+    public ResponseEntity<Topic3Entity> editTopic(@RequestBody Topic3Entity topic3) {
+        Topic3Entity editedTopic = service3.addAnswer(topic3);
+        if (editedTopic == null) {
+            return ResponseEntity.status(400).body(topic3);
+        }
+        return ResponseEntity.ok(editedTopic);
+    }
 
-    // @DeleteMapping("/topic3{id}")
-    // public ResponseEntity<Integer> deleteTopic3(@PathVariable Long id) {
-    //     Integer deletedId = service3.deleteAnswer(id);
-    //     if (deletedId == null) {
-    //         return ResponseEntity.status(400).build();
-    //     }
-    //     return ResponseEntity.ok(deletedId);
-    // }
+    @DeleteMapping("/topic3/{id}")
+    public ResponseEntity<Integer> deleteTopic3(@PathVariable int id) {
+        Integer deletedId = service3.deleteAnswer(id);
+        if (deletedId == null) {
+            return ResponseEntity.status(400).build();
+        }
+        return ResponseEntity.ok(deletedId);
+    }
 
-    // @GetMapping("/topic4/{id}")
-    // public ResponseEntity<Topic4Entity> getTopic4(@PathVariable Long id) {
-    //     Topic4Entity foundTopic = service4.getAnswer(id);
-    //     if (foundTopic == null) {
-    //         return ResponseEntity.ok().build();
-    //     }
-    //     return ResponseEntity.ok(foundTopic);
-    // }
+    @GetMapping("/topic4/{id}")
+    public ResponseEntity<Topic4Entity> getTopic4(@PathVariable int id) {
+        Topic4Entity foundTopic = service4.getAnswer(id);
+        if (foundTopic == null) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.ok(foundTopic);
+    }
 
-    // @PutMapping("/topic4")
-    // public ResponseEntity<Topic4Entity> editTopic(@RequestBody Topic4Entity topic4) {
-    //     Topic4Entity editedTopic = service4.editAnswer(topic4);
-    //     if (editedTopic == null) {
-    //         return ResponseEntity.status(400).body(topic4);
-    //     }
-    //     return ResponseEntity.ok(editedTopic);
-    // }
+    @PutMapping("/topic4")
+    public ResponseEntity<Topic4Entity> editTopic(@RequestBody Topic4Entity topic4) {
+        Topic4Entity editedTopic = service4.addAnswer(topic4);
+        if (editedTopic == null) {
+            return ResponseEntity.status(400).body(topic4);
+        }
+        return ResponseEntity.ok(editedTopic);
+    }
 
-    // @DeleteMapping("/topic4{id}")
-    // public ResponseEntity<Integer> deleteTopic4(@PathVariable Long id) {
-    //     Integer deletedId = service4.deleteAnswer(id);
-    //     if (deletedId == null) {
-    //         return ResponseEntity.status(400).build();
-    //     }
-    //     return ResponseEntity.ok(deletedId);
-    // }
+    @DeleteMapping("/topic4/{id}")
+    public ResponseEntity<Integer> deleteTopic4(@PathVariable int id) {
+        Integer deletedId = service4.deleteAnswer(id);
+        if (deletedId == null) {
+            return ResponseEntity.status(400).build();
+        }
+        return ResponseEntity.ok(deletedId);
+    }
 
     @PostMapping("/account")
     public ResponseEntity<Account> addAccount(@RequestBody Account account) {

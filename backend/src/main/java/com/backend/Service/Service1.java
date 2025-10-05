@@ -15,6 +15,7 @@ public class Service1 {
         this.topic1Repository = topic1Repository;
     }
 
+    @Transactional
     public Topic1Entity addAnswer(Topic1Entity topic1Entity) {
         int accountId = topic1Entity.getAccountId();
         if (topic1Repository.existsByAccountId(accountId)) {
