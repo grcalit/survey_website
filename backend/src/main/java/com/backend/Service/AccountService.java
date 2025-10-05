@@ -36,8 +36,10 @@ public class AccountService {
         return null;
     }
 
-    public Account getAccount(int id) {
-        return accountRepository.findById(id).orElse(null);
+    public Account getAccount(Account account) {
+        String email = account.getEmail();
+        String password = account.getPassword();
+        return accountRepository.findByEmailAndPassword(email, password).orElse(null);
     }
 
     public Account editAccount(Account account) {

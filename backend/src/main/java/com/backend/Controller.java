@@ -144,9 +144,9 @@ public class Controller {
         return ResponseEntity.ok(account);
     }
 
-    @GetMapping("/account/{id}")
-    public ResponseEntity<Account> getAccount(@PathVariable int id) {
-        Account foundAccount = accountService.getAccount(id);
+    @GetMapping("/account")
+    public ResponseEntity<Account> getAccount(@RequestBody Account account) {
+        Account foundAccount = accountService.getAccount(account);
         if (foundAccount == null) {
             return ResponseEntity.status(400).body(foundAccount);
         }

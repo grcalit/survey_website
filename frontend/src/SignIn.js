@@ -1,6 +1,4 @@
-import {useState} from "react";
-
-export default function Login({pageSetter, logFunc, idFunc}) {
+export default function SignIn({pageSetter, logFunc}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -9,7 +7,7 @@ export default function Login({pageSetter, logFunc, idFunc}) {
 
         try {
             const res = await fetch('http://localhost:8080/api/account', {
-                method:"GET",
+                method:"POST",
                 headers:{ "Content-Type": "application/json" },
                 body:JSON.stringify(data)
             });
@@ -24,7 +22,7 @@ export default function Login({pageSetter, logFunc, idFunc}) {
 
     return (
         <div>
-            <p>Login</p>
+            <p>Sign In</p>
             <p name="email">Email:</p>
             <input name="email" value={email} type="text" placeholder="Enter Email" onChange={((e) => setEmail(e.target.value))}></input>
             <p name="password">Password:</p>
@@ -33,6 +31,5 @@ export default function Login({pageSetter, logFunc, idFunc}) {
             <br/>
             <button onClick={handleSubmit}>Enter</button>
         </div>
-        
     )
 }
