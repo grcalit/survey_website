@@ -23,12 +23,11 @@ function App() {
       {pageNum===0 && <BeginSurvey pageSetter={setPageNum}/>}
       {pageNum===4 && <Login pageSetter={setPageNum} logFunc={setLoggedIn} idFunc={setId}/>}
       {pageNum===3 && <SignIn pageSetter={setPageNum} logFunc={setLoggedIn} idFunc={setId}/>}
-      {pageNum===2 && <Questions pageSetter={setPageNum} completeFunc={setComplete} accountId={id}/>}
+      {pageNum===2 && <Questions pageSetter={setPageNum} accountId={id} isLoggedIn={isLoggedIn}/>}
       {pageNum!==0 && <button onClick={back}>Back</button>}
     </div>
   )
 }
-  // const [isCompleted, setComplete] = useState(false);
 
 // {pageNum===3 && <Charts pageSetter={setPageNum}/>}
 export default App;

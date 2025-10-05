@@ -1,6 +1,6 @@
 export const topics = 
 [
-    {"id": 1, "title": "Sleeping", "questions": 
+    {"title": "Sleeping", "questions": 
         [{"id": 1,
         "text": "how do you feel?",
         "type_of_question": "select",
@@ -17,7 +17,7 @@ export const topics =
         "options": ["other", "female", "male"]
         }
         ]}, 
-    {"id": 2, "title": "Exercise", "questions": [
+    {"title": "Exercise", "questions": [
         {"id": 1,
         "text": "how is your age?",
         "type_of_question": "select",
