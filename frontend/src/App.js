@@ -1,42 +1,46 @@
 import './App.css';
-import Question from './Questions.js';
+import BeginSurvey from './BeginSurvey.js';
+import Login from './Login.js';
 import { useState } from 'react';
-import {topics} from './questionInfo.js';
-
 
 function App() {
-  [pageNum, setPageNum] = useState(0);
-  [isLoggedIn, setLoggedIn] = useState(false);
-  [nextText, setNextText] = useState("Begin Survey");
-  [isCompleted, setComplete] = useState(false);
-  const testMap = {0: "Begin", 1: "View Results", 2: "Sign Up", 3: "Enter", 4: "Enter"};
+  const [pageNum, setPageNum] = useState(0);
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [id, setId] = useState(0);
 
   function back() {
-    if (isLoggedIn && (pageNum==1 | pageNum==4)) {
-      setPageNum(pageNum==1? 4:0);
+    if (isLoggedIn && (pageNum===1 || pageNum===4)) {
+      setPageNum(pageNum===1? 4:0);
+    } else if(pageNum==4) {
+      setPageNum(0);
     } else {
       setPageNum(pageNum-1);
     }
-    setNextText(testMap[pageNum]);
   }
-  function next() {
-    if (isLoggedIn && pageNum==0 | pageNum==4) {
-      setPageNum(pageNum==0? 4:1);
-    } else {
-      setPageNum(pageNum+1);
-    }
-    setNextText(testMap[pageNum]);
-  }
-
-  {pageNum==0 && <BeginSurvey pageSetter={setPageNum}/>}
-  {pageNum==1 && <Login pageSetter={setPageNum} logFunc={setLoggedIn}/>}
-  {pageNum==2 && <Questions pageSetter={setPageNum}/>}
-  {pageNum==3 && <Charts pageSetter={setPageNum}/>}
-  {pageNum==4 && <SignIn pageSetter={setPageNum}/>}
-  {pageNum!=0 && <button onClick={back}>Back</button>}
-  {((isLoggedIn && pageNum!==2) | !isLoggedIn) && <button onClick={next}>{nextText}</button>}
+  return (
+    <div>
+      {pageNum===0 && <BeginSurvey pageSetter={setPageNum}/>}
+      {pageNum===4 && <Login pageSetter={setPageNum} logFunc={setLoggedIn} idFunc={setId}/>}
+      
+      {pageNum!==0 && <button onClick={back}>Back</button>}
+    </div>
+  )
 }
+  // const [isCompleted, setComplete] = useState(false);
 
+// function next() {
+//     if (isLoggedIn && pageNum===0 | pageNum===4) {
+//       setPageNum(pageNum===0? 4:1);
+//     } else {
+//       setPageNum(pageNum+1);
+//     }
+//     setNextText(testMap[pageNum]);
+//   }
+// {((isLoggedIn && pageNum!==2) | !isLoggedIn) && <button onClick={next}>{nextText}</button>}
+
+// {pageNum===2 && <Questions pageSetter={setPageNum} completeFunc={setComplete}/>}
+// {pageNum===3 && <Charts pageSetter={setPageNum}/>}
+// {pageNum===4 && <SignIn pageSetter={setPageNum}/>}
 export default App;
 
 // const [index, setIndex] = useState(1);
