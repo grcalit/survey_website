@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.backend.Entity.Topic2Entity;
 import com.backend.Repository.Topic2Repository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class Service2 {
@@ -14,7 +15,29 @@ public class Service2 {
         this.topic2Repository = topic2Repository;
     }
 
+    @Transactional
     public Topic2Entity addAnswer(Topic2Entity topic2Entity) {
+        int accountId = topic2Entity.getAccountId();
+        if (topic2Repository.existsByAccountId(accountId)) {
+            topic2Repository.deleteByAccountId(accountId);
+            topic2Repository.save(topic2Entity);
+        }
         return topic2Repository.save(topic2Entity);
+    }
+
+    public Topic2Entity getAnswer(int accountId) {
+        if (topic2Repository.existsByAccountId(accountId)) {
+            return topic2Repository.getByAccountId(accountId);
+        }
+        return null;
+    }
+
+    @Transactional
+    public Integer deleteAnswer(int accountId) {
+        if (topic2Repository.existsByAccountId(accountId)) {
+            topic2Repository.deleteByAccountId(accountId);
+            return accountId;
+        }
+        return null;
     }
 }

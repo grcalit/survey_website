@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.backend.Entity.Topic1Entity;
 import com.backend.Repository.Topic1Repository;
-
 import jakarta.transaction.Transactional;
 
 @Service

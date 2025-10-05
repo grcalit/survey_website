@@ -12,16 +12,16 @@ import com.backend.Service.*;
 
 public class Controller {
     private Service1 service1;
-    // private Service2 service2;
+    private Service2 service2;
     // private Service3 service3;
     // private Service4 service4;
     private AccountService accountService;
 
 
     @Autowired
-    public Controller(Service1 service1, AccountService accountService) { //, Service2 service2, Service3 service3, Service4 service4, AccountService accountService) {
+    public Controller(Service1 service1, AccountService accountService, Service2 service2) { //, Service3 service3, Service4 service4, AccountService accountService) {
         this.service1 = service1;
-        // this.service2 = service2;
+        this.service2 = service2;
         // this.service3 = service3;
         // this.service4 = service4;
         this.accountService = accountService;
@@ -54,23 +54,32 @@ public class Controller {
         return ResponseEntity.ok(deletedId);
     }
 
-    // @PutMapping("/topic2")
-    // public ResponseEntity<Topic2Entity> editTopic(@RequestBody Topic2Entity topic2) {
-    //     Topic2Entity editedTopic = service1.editAnswer(topic2);
-    //     if (editedTopic == null) {
-    //         return ResponseEntity.status(400).body(topic2);
-    //     }
-    //     return ResponseEntity.ok(editedTopic);
-    // }
+    @PutMapping("/topic2")
+    public ResponseEntity<Topic2Entity> editTopic(@RequestBody Topic2Entity topic2) {
+        Topic2Entity editedTopic = service2.addAnswer(topic2);
+        if (editedTopic == null) {
+            return ResponseEntity.status(400).body(topic2);
+        }
+        return ResponseEntity.ok(editedTopic);
+    }
 
-    // @DeleteMapping("/topic2{id}")
-    // public ResponseEntity<Integer> deleteTopic2(@PathVariable Long id) {
-    //     Integer deletedId = service2.deleteAnswer(id);
-    //     if (deletedId == null) {
-    //         return ResponseEntity.status(400).build();
-    //     }
-    //     return ResponseEntity.ok(deletedId);
-    // }
+    @DeleteMapping("/topic2/{id}")
+    public ResponseEntity<Integer> deleteTopic2(@PathVariable int id) {
+        Integer deletedId = service2.deleteAnswer(id);
+        if (deletedId == null) {
+            return ResponseEntity.status(400).build();
+        }
+        return ResponseEntity.ok(deletedId);
+    }
+
+    @GetMapping("/topic2/{id}")
+    public ResponseEntity<Topic2Entity> getTopic2(@PathVariable int id) {
+        Topic2Entity foundTopic = service2.getAnswer(id);
+        if (foundTopic == null) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.ok(foundTopic);
+    }
 
     // @GetMapping("/topic3/{id}")
     // public ResponseEntity<Topic3Entity> getTopic3(@PathVariable Long id) {

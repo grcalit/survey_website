@@ -9,23 +9,40 @@ public class Topic2Entity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private int questionId;
-    private String answer;
+    @Column(nullable = false)
+    private int accountId;
+
+    @Column(nullable = false)
+    private String q1;
+
+    @Column(nullable = false)
+    private String q2;
+
+    @Column(nullable = false)
+    private String q3;
 
     public Topic2Entity() {}
 
-    public Topic2Entity(int questionId, String answer) {
-        this.questionId = questionId;
-        this.answer = answer;
+    public Topic2Entity(int accountId, String q1, String q2, String q3) {
+        this.accountId = accountId;
+        this.q1 = q1;
+        this.q2 = q2;
+        this.q3 = q3;
     }
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
 
-    public int getQuestionId() {return questionId;}
-    public void setQuestionId(int questionId) {this.questionId = questionId;}
+    public int getAccountId() {return accountId;}
+    public void setAccountId(int accountId) {this.accountId = accountId;}
 
-    public String getAnswer() {return answer;}
-    public void setAnswer(String answer) {this.answer = answer;}
+    public String getQ1() {return q1;}
+    public void setQ1(String q1) {this.q1 = q1;}
+
+    public String getQ2() {return q2;}
+    public void setQ2(String q2) {this.q2 = q2;}
+
+    public String getQ3() {return q3;}
+    public void setQ3(String q3) {this.q3 = q3;}
 
 }
