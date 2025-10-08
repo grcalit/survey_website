@@ -27,7 +27,7 @@ export default function Survey({topicNum, data, dataFunc}) {
                             ))}
                         </select>
                     ) : (
-                        <input type="text" value={answers[q.id] || ""}
+                        <input type="text" value={data[q.id] || ""}
                         onChange={(e) => handleChange(q.id, e.target.value)}
                         placeholder="Type your answer..."/>
                     )}

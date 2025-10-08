@@ -1,12 +1,9 @@
-import { useState } from 'react';
-import questionInfo from './questionInfo.js';
-
-export default function TopBar({topicFunc}) {
+export default function TopBar({topicFunc, topics}) {
     
 
     return (
         <div>
-            {q_topics.map(topic => 
+            {topics.map(topic => 
                 <button onClick={() => topicFunc(topic.id)}>
                     {topic.id + ". " + topic.title}
                 </button>)}

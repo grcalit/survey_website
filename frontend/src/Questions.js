@@ -1,5 +1,7 @@
 import {useState} from 'react';
-import topics from "./questionInfo.js";
+import topics from './questionInfo.js';
+import Survey from './Survey.js';
+import TopBar from './TopBar.js';
 
 export default function Questions({pageSetter, accountId}) {
     const [topicNum, setTopicNum] = useState(0);
@@ -35,8 +37,8 @@ export default function Questions({pageSetter, accountId}) {
 
     return (
         <div>
-            <TopBar topicFunc={setTopicNum}/>
-            <Survey questions={topics[topicNum]} data={data} dataFunc={setData}/>
+            <TopBar topicFunc={setTopicNum} topics={topics}/>
+            <Survey topicNum={topicNum} data={data} dataFunc={setData}/>
             {topicNum!==0 && <button onClick={back}>Back</button>}
             <button onClick={next}>{nextText}</button>
         </div>
