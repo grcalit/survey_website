@@ -20,10 +20,10 @@ function App() {
   }
   return (
     <div>
-      {pageNum===0 && <BeginSurvey pageSetter={setPageNum}/>}
+      {pageNum===0 && <BeginSurvey pageSetter={setPageNum} idFunc={setId}/>}
       {pageNum===4 && <Login pageSetter={setPageNum} logFunc={setLoggedIn} idFunc={setId}/>}
-      {pageNum===3 && <SignIn pageSetter={setPageNum} logFunc={setLoggedIn} idFunc={setId}/>}
-      {pageNum===2 && <Questions pageSetter={setPageNum} accountId={id} isLoggedIn={isLoggedIn}/>}
+      {pageNum===3 && <SignIn pageSetter={setPageNum} accountId={id}/>}
+      {pageNum===2 && <Questions pageSetter={setPageNum} accountId={id}/>}
       {pageNum!==0 && <button onClick={back}>Back</button>}
     </div>
   )

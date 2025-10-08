@@ -1,22 +1,19 @@
-export default function SignIn({pageSetter, logFunc}) {
+export default function SignIn({pageSetter, id}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async () => {
-        const data = {email, password};
+        const data = {"id": id, "email": email, "password": password};
 
         try {
             const res = await fetch('http://localhost:8080/api/account', {
-                method:"POST",
+                method:"PATCH",
                 headers:{ "Content-Type": "application/json" },
                 body:JSON.stringify(data)
             });
-            const responseData = await res.json();
-            idFunc(responseData.id);
         } catch (error) {
             console.log("ERROR SENDING ACCOUNT DATA");
         }
-        logFunc(true);
         pageSetter(1);
     }
 

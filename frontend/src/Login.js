@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export default function Login({pageSetter, logFunc, idFunc}) {
+export default function Login({pageSetter, idFunc}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -18,7 +18,6 @@ export default function Login({pageSetter, logFunc, idFunc}) {
         } catch (error) {
             console.log("ERROR SENDING ACCOUNT DATA");
         }
-        logFunc(true);
         pageSetter(1);
     }
 

@@ -16,8 +16,7 @@ public class Service4 {
     }
 
     @Transactional
-    public Topic4Entity addAnswer(Topic4Entity topic4Entity) {
-        int accountId = topic4Entity.getAccountId();
+    public Topic4Entity addAnswer(int accountId, Topic4Entity topic4Entity) {
         if (topic4Repository.existsByAccountId(accountId)) {
             topic4Repository.deleteByAccountId(accountId);
             topic4Repository.save(topic4Entity);

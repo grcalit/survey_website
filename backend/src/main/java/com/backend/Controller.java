@@ -36,9 +36,9 @@ public class Controller {
         return ResponseEntity.ok(foundTopic);
     }
 
-    @PutMapping("/topic1")
-    public ResponseEntity<Topic1Entity> editTopic(@RequestBody Topic1Entity topic1) {
-        Topic1Entity editedTopic = service1.addAnswer(topic1);
+    @PutMapping("/topic1/{id}")
+    public ResponseEntity<Topic1Entity> editTopic(@PathVariable int id, @RequestBody Topic1Entity topic1) {
+        Topic1Entity editedTopic = service1.addAnswer(id, topic1);
         if (editedTopic == null) {
             return ResponseEntity.status(400).body(topic1);
         }
@@ -54,9 +54,9 @@ public class Controller {
         return ResponseEntity.ok(deletedId);
     }
 
-    @PutMapping("/topic2")
-    public ResponseEntity<Topic2Entity> editTopic(@RequestBody Topic2Entity topic2) {
-        Topic2Entity editedTopic = service2.addAnswer(topic2);
+    @PutMapping("/topic2/{id}")
+    public ResponseEntity<Topic2Entity> editTopic(@PathVariable int id, @RequestBody Topic2Entity topic2) {
+        Topic2Entity editedTopic = service2.addAnswer(id, topic2);
         if (editedTopic == null) {
             return ResponseEntity.status(400).body(topic2);
         }
@@ -90,9 +90,9 @@ public class Controller {
         return ResponseEntity.ok(foundTopic);
     }
 
-    @PutMapping("/topic3")
-    public ResponseEntity<Topic3Entity> editTopic(@RequestBody Topic3Entity topic3) {
-        Topic3Entity editedTopic = service3.addAnswer(topic3);
+    @PutMapping("/topic3/{id}")
+    public ResponseEntity<Topic3Entity> editTopic(@PathVariable int id, @RequestBody Topic3Entity topic3) {
+        Topic3Entity editedTopic = service3.addAnswer(id, topic3);
         if (editedTopic == null) {
             return ResponseEntity.status(400).body(topic3);
         }
@@ -117,9 +117,9 @@ public class Controller {
         return ResponseEntity.ok(foundTopic);
     }
 
-    @PutMapping("/topic4")
-    public ResponseEntity<Topic4Entity> editTopic(@RequestBody Topic4Entity topic4) {
-        Topic4Entity editedTopic = service4.addAnswer(topic4);
+    @PutMapping("/topic4/{id}")
+    public ResponseEntity<Topic4Entity> editTopic(@PathVariable int id, @RequestBody Topic4Entity topic4) {
+        Topic4Entity editedTopic = service4.addAnswer(id, topic4);
         if (editedTopic == null) {
             return ResponseEntity.status(400).body(topic4);
         }
@@ -154,7 +154,7 @@ public class Controller {
     }
 
     @PatchMapping("/account")
-    public ResponseEntity<Account> editAccount(@RequestBody Account account) {
+    public ResponseEntity<Account> editAccount(@PathVariable int id, @RequestBody Account account) {
         Account editedAccount = accountService.editAccount(account);
         if (editedAccount == null) {
             return ResponseEntity.status(400).build();

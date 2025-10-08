@@ -46,8 +46,9 @@ public class AccountService {
         int id = account.getId();
         String email = account.getEmail();
         String password = account.getPassword();
-        Account foundAccount = accountRepository.findByIdAndEmail(id, email).orElse(null);
+        Account foundAccount = accountRepository.findById(id).orElse(null);
         if (foundAccount != null) {
+            foundAccount.setEmail(email);
             foundAccount.setPassword(password);
             return accountRepository.save(foundAccount);
         }
