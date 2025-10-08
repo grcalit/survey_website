@@ -21,6 +21,7 @@ public class Service4 {
             topic4Repository.deleteByAccountId(accountId);
             topic4Repository.save(topic4Entity);
         }
+        topic4Entity.setAccountId(accountId);
         return topic4Repository.save(topic4Entity);
     }
 

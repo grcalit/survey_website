@@ -36,7 +36,7 @@ public class Controller {
         return ResponseEntity.ok(foundTopic);
     }
 
-    @PutMapping("/topic1/{id}")
+    @PostMapping("/topic1/{id}")
     public ResponseEntity<Topic1Entity> editTopic(@PathVariable int id, @RequestBody Topic1Entity topic1) {
         Topic1Entity editedTopic = service1.addAnswer(id, topic1);
         if (editedTopic == null) {
@@ -54,7 +54,7 @@ public class Controller {
         return ResponseEntity.ok(deletedId);
     }
 
-    @PutMapping("/topic2/{id}")
+    @PostMapping("/topic2/{id}")
     public ResponseEntity<Topic2Entity> editTopic(@PathVariable int id, @RequestBody Topic2Entity topic2) {
         Topic2Entity editedTopic = service2.addAnswer(id, topic2);
         if (editedTopic == null) {
@@ -90,7 +90,7 @@ public class Controller {
         return ResponseEntity.ok(foundTopic);
     }
 
-    @PutMapping("/topic3/{id}")
+    @PostMapping("/topic3/{id}")
     public ResponseEntity<Topic3Entity> editTopic(@PathVariable int id, @RequestBody Topic3Entity topic3) {
         Topic3Entity editedTopic = service3.addAnswer(id, topic3);
         if (editedTopic == null) {
@@ -117,7 +117,7 @@ public class Controller {
         return ResponseEntity.ok(foundTopic);
     }
 
-    @PutMapping("/topic4/{id}")
+    @PostMapping("/topic4/{id}")
     public ResponseEntity<Topic4Entity> editTopic(@PathVariable int id, @RequestBody Topic4Entity topic4) {
         Topic4Entity editedTopic = service4.addAnswer(id, topic4);
         if (editedTopic == null) {
