@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import './SignIn.css';
 
 export default function SignIn({pageSetter, accountId}) {
     const [email, setEmail] = useState("");
@@ -20,12 +21,12 @@ export default function SignIn({pageSetter, accountId}) {
     }
 
     return (
-        <div>
+        <div className="signin-container">
             <p>Sign In</p>
             <p name="email">Email:</p>
             <input name="email" value={email} type="text" placeholder="Enter Email" onChange={((e) => setEmail(e.target.value))}></input>
             <p name="password">Password:</p>
-            <p>The password must have at least 1 number, 1 special character, and be at least 9 characters. </p>
+            <p className="password-rules">The password must have at least 1 number, 1 special character, and be at least 9 characters. </p>
             <input name="password" value={password} type="password" minLength="9" maxLength="20" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}></input>
             <br/>
             <button onClick={handleSubmit}>Enter</button>

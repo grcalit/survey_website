@@ -2,6 +2,7 @@ import {useState} from 'react';
 import topics from './questionInfo.js';
 import Survey from './Survey.js';
 import TopBar from './TopBar.js';
+import './Questions.css'
 
 export default function Questions({pageSetter, accountId, data, dataFunc}) {
     const [topicNum, setTopicNum] = useState(0);
@@ -40,11 +41,17 @@ export default function Questions({pageSetter, accountId, data, dataFunc}) {
     }
 
     return (
-        <div>
-            <TopBar topicFunc={setTopicNum} topics={topics}/>
-            <Survey topicNum={topicNum} data={data} dataFunc={dataFunc}/>
-            <button onClick={back}>Back</button>
-            <button onClick={next}>{nextText}</button>
+        <div className="full-survey-page">
+            <div className="top-bar">
+                <TopBar topicFunc={setTopicNum} topics={topics}/>
+            </div>
+            <div className="survey-section">
+                <Survey topicNum={topicNum} data={data} dataFunc={dataFunc}/>
+            </div>
+            <div className="nav-buttons">
+                <button onClick={back}>Back</button>
+            <   button onClick={next}>{nextText}</button>
+            </div>
         </div>
     )    
 }

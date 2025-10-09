@@ -1,3 +1,5 @@
+import './BeginSurvey.css';
+
 export default function BeginSurvey({pageSetter, idFunc}) {
 
     const setId = async() => {
@@ -17,7 +19,7 @@ export default function BeginSurvey({pageSetter, idFunc}) {
     }
 
     return (
-    <div>
+    <div class="survey-container">
         <button onClick={() => pageSetter(4)}>Login</button>
         <p>Welcome to the Lifestyle Survey</p>
         <p>Press the button to begin!</p>
