@@ -1,7 +1,5 @@
 package com.backend.Service;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.backend.Entity.Topic2Entity;
@@ -42,6 +40,9 @@ public class Service2 {
             answers.put("q1", rec.getQ1());
             answers.put("q2", rec.getQ2());
             answers.put("q3", rec.getQ3());
+            answers.put("q4", rec.getQ4());
+            answers.put("q5", rec.getQ5());
+            answers.put("q6", rec.getQ6());
             return answers;
         }
         return new HashMap<>();
@@ -54,5 +55,17 @@ public class Service2 {
             return accountId;
         }
         return null;
+    }
+
+    public Map<String, List<String>> getAllAnswers() {
+        List<Topic2Entity> all = topic2Repository.findAll();
+        Map<String, List<String>> data = new HashMap<>();
+        data.put("q1", all.stream().map(Topic2Entity::getQ1).toList());
+        data.put("q2", all.stream().map(Topic2Entity::getQ2).toList());
+        data.put("q3", all.stream().map(Topic2Entity::getQ3).toList());
+        data.put("q4", all.stream().map(Topic2Entity::getQ4).toList());
+        data.put("q5", all.stream().map(Topic2Entity::getQ5).toList());
+        data.put("q6", all.stream().map(Topic2Entity::getQ6).toList());
+        return data;
     }
 }

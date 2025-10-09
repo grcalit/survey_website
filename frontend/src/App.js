@@ -20,7 +20,7 @@ function App() {
     <div>
       {pageNum===0 && <BeginSurvey pageSetter={setPageNum} idFunc={setId}/>}
       {pageNum===1 && <Questions pageSetter={setPageNum} accountId={id} data={data} dataFunc={setData}/>}
-      {pageNum===2 && <Charts pageSetter={setPageNum}/>}
+      {pageNum===2 && <Charts pageSetter={setPageNum} isLoggedIn={isLoggedIn} data={data}/>}
       {pageNum===3 && <SignIn pageSetter={setPageNum} accountId={id} logFunc={setLogIn}/>}
       {pageNum===4 && <Login pageSetter={setPageNum} idFunc={setId} dataFunc={setData} logFunc={setLogIn}/>}
     </div>

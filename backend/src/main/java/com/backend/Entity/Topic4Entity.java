@@ -21,13 +21,21 @@ public class Topic4Entity {
     @Column(nullable = false)
     private String q3;
 
+    @Column(nullable = false)
+    private String q4;
+
+    @Column(nullable = false)
+    private String q5;
+
     public Topic4Entity() {}
 
-    public Topic4Entity(int accountId, String q1, String q2, String q3) {
+    public Topic4Entity(int accountId, String q1, String q2, String q3, String q4, String q5) {
         this.accountId = accountId;
         this.q1 = q1;
         this.q2 = q2;
         this.q3 = q3;
+        this.q4 = q4;
+        this.q5 = q5;
     }
 
     public Long getId() {return id;}
@@ -44,5 +52,11 @@ public class Topic4Entity {
 
     public String getQ3() {return q3;}
     public void setQ3(String q3) {this.q3 = q3;}
+
+    public String getQ4() {return q4;}
+    public void setQ4(String q4) {this.q4 = q4;}
+
+    public String getQ5() {return q5;}
+    public void setQ5(String q5) {this.q5 = q5;}
 
 }

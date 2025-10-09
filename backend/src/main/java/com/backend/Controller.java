@@ -186,4 +186,31 @@ public class Controller {
         return ResponseEntity.ok(deletedId);
     }
 
+    @GetMapping("/topic1/charts")
+    public ResponseEntity<Map<String, List<String>>> gatherAnswers1() {
+        Map<String, List<String>> answers = new HashMap<>();
+        answers = service1.getAllAnswers();
+        return ResponseEntity.ok(answers);
+    }
+
+    @GetMapping("/topic2/charts")
+    public ResponseEntity<Map<String, List<String>>> gatherAnswers2() {
+        Map<String, List<String>> answers = new HashMap<>();
+        answers = service2.getAllAnswers();
+        return ResponseEntity.ok(answers);
+    }
+
+    @GetMapping("/topic3/charts")
+    public ResponseEntity<Map<String, List<String>>> gatherAnswers3() {
+        Map<String, List<String>> answers = new HashMap<>();
+        answers = service2.getAllAnswers();
+        return ResponseEntity.ok(answers);
+    }
+
+    @GetMapping("/topic4/charts")
+    public ResponseEntity<Map<String, List<String>>> gatherAnswers4() {
+        Map<String, List<String>> answers = new HashMap<>();
+        answers = service2.getAllAnswers();
+        return ResponseEntity.ok(answers);
+    }
 }
