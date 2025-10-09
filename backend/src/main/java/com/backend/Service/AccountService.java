@@ -25,15 +25,26 @@ public class AccountService {
     }
 
     public Account addAccount(Account account) {
-        if (account.getId() != null) {
-            return null;
-        }
         String email = account.getEmail();
         String password = account.getPassword();
+
+        if ((email == null || email.isEmpty()) && (password == null || password.isEmpty())) {
+            account.setEmail("guest_" + System.currentTimeMillis() + "@example.com");
+            account.setPassword("Guest123!");
+            return accountRepository.save(account);
+        }
+        if (accountRepository.findByEmailAndPassword(email, password) != null) {
+            return null;
+        }
+
         if (email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$") & password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$")) {
             return accountRepository.save(account);
         }
         return null;
+    }
+
+    public Account getAccountById(int id) {
+        return accountRepository.findById(id).orElse(null);
     }
 
     public Account getAccount(Account account) {
@@ -42,8 +53,7 @@ public class AccountService {
         return accountRepository.findByEmailAndPassword(email, password).orElse(null);
     }
 
-    public Account editAccount(Account account) {
-        int id = account.getId();
+    public Account editAccount(int id, Account account) {
         String email = account.getEmail();
         String password = account.getPassword();
         Account foundAccount = accountRepository.findById(id).orElse(null);

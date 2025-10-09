@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.backend.Entity.Topic1Entity;
 import com.backend.Repository.Topic1Repository;
 import jakarta.transaction.Transactional;
+import java.util.*;
 
 @Service
 public class Service1 {
@@ -30,6 +31,18 @@ public class Service1 {
             return topic1Repository.getByAccountId(accountId);
         }
         return null;
+    }
+
+    public Map<String, String> getAnswerAsJSON(int accountId) {
+        if (topic1Repository.existsByAccountId(accountId)) {
+            Topic1Entity rec = topic1Repository.getByAccountId(accountId);
+            Map<String, String> answers = new HashMap<>();
+            answers.put("q1", rec.getQ1());
+            answers.put("q2", rec.getQ2());
+            answers.put("q3", rec.getQ3());
+            return answers;
+        }
+        return new HashMap<>();
     }
 
     @Transactional

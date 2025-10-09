@@ -1,7 +1,7 @@
 export default function BeginSurvey({pageSetter, idFunc}) {
 
     const setId = async() => {
-        const data = {"email": "", "password": ""}
+        const data = {"email": "", "password": ""};
         try {
             const res = await fetch('http://localhost:8080/api/account', {
                 method: "POST", 
@@ -9,6 +9,7 @@ export default function BeginSurvey({pageSetter, idFunc}) {
                 body:JSON.stringify(data)
             });
             const responseData = await res.json();
+            console.log(responseData.id);
             idFunc(responseData.id);
         } catch (error) {
             console.log("ERROR SENDING EMPTY ACCOUNT DATA IN BEGIN SURVEY");

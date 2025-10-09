@@ -1,20 +1,20 @@
 import {useState} from 'react';
 
-export default function SignIn({pageSetter, id}) {
+export default function SignIn({pageSetter, accountId}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async () => {
-        const data = {"id": id, "email": email, "password": password};
+        const data = {"id": accountId, "email": email, "password": password};
 
         try {
-            const res = await fetch('http://localhost:8080/api/account', {
+            const res = await fetch(`http://localhost:8080/api/account/${accountId}`, {
                 method:"PATCH",
                 headers:{ "Content-Type": "application/json" },
                 body:JSON.stringify(data)
             });
         } catch (error) {
-            console.log("ERROR SENDING ACCOUNT DATA");
+            console.log("ERROR SENDING ACCOUNT DATA: ", error);
         }
         pageSetter(1);
     }
@@ -29,6 +29,7 @@ export default function SignIn({pageSetter, id}) {
             <input name="password" value={password} type="password" minLength="9" maxLength="20" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}></input>
             <br/>
             <button onClick={handleSubmit}>Enter</button>
+            <button onClick={() => pageSetter(2)}>Back</button>
         </div>
     )
 }

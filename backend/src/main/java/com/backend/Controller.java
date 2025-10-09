@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.backend.Entity.*;
 import com.backend.Service.*;
+import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -144,18 +145,32 @@ public class Controller {
         return ResponseEntity.ok(account);
     }
 
-    @GetMapping("/account")
-    public ResponseEntity<Account> getAccount(@RequestBody Account account) {
+    @PostMapping("/login")
+    public ResponseEntity<Integer> getAccountId(@RequestBody Account account) {
         Account foundAccount = accountService.getAccount(account);
         if (foundAccount == null) {
-            return ResponseEntity.status(400).body(foundAccount);
+            return null;
         }
-        return ResponseEntity.ok(foundAccount);
+        int id = foundAccount.getId();
+        
+        return ResponseEntity.ok(id);
     }
 
-    @PatchMapping("/account")
+    @GetMapping("/loginAnswers/{id}")
+    public ResponseEntity<Map<String, Map<String, String>>> getAccountAnswers(@PathVariable int id) {
+        Account foundAccount = accountService.getAccountById(id);
+        if (foundAccount == null) {
+            return null;
+        }
+        Map<String, Map<String, String>> answers = new HashMap<>();
+        answers.put("Sleeping", service1.getAnswerAsJSON(id));
+        answers.put("Exercise", service2.getAnswerAsJSON(id));
+        return ResponseEntity.ok(answers);
+    }
+
+    @PatchMapping("/account/{id}")
     public ResponseEntity<Account> editAccount(@PathVariable int id, @RequestBody Account account) {
-        Account editedAccount = accountService.editAccount(account);
+        Account editedAccount = accountService.editAccount(id, account);
         if (editedAccount == null) {
             return ResponseEntity.status(400).build();
         }

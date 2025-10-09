@@ -1,12 +1,13 @@
 import topics from "./questionInfo.js";
 
 export default function Survey({topicNum, data, dataFunc}) {
-    const questions = topics[topicNum];
+    const topicName = topics[topicNum].title;
+    const questions = topics[topicNum].questions;
     const handleChange = (id, value) => {
         dataFunc((prev) => ({
             ...prev,
-            [topicNum]: {
-                ...(prev[topicNum] || {}),
+            [topicName]: {
+                ...(prev[topicName] || {}),
                 [id]: value
             }
         }));
@@ -19,7 +20,7 @@ export default function Survey({topicNum, data, dataFunc}) {
                     <h3>{q.question}</h3>
 
                     {q.type === "select" ? (
-                        <select value={data[q.id] || ""}
+                        <select value={data[topicName]?.[q.id] || ""}
                         onChange={(e) => handleChange(q.id, e.target.value)}>
                             <option value="">Select an option</option>
                             {q.options.map((opt, idx) => (
@@ -27,7 +28,7 @@ export default function Survey({topicNum, data, dataFunc}) {
                             ))}
                         </select>
                     ) : (
-                        <input type="text" value={data[q.id] || ""}
+                        <input type="text" value={data[topicName]?.[q.id] || ""}
                         onChange={(e) => handleChange(q.id, e.target.value)}
                         placeholder="Type your answer..."/>
                     )}

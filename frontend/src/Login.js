@@ -1,22 +1,33 @@
 import {useState} from "react";
 
-export default function Login({pageSetter, idFunc}) {
+export default function Login({pageSetter, idFunc, dataFunc, logFunc}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async () => {
-        const data = {email, password};
-
         try {
-            const res = await fetch('http://localhost:8080/api/account', {
-                method:"GET",
+            const res1 = await fetch('http://localhost:8080/api/login', {
+                method:"POST",
                 headers:{ "Content-Type": "application/json" },
-                body:JSON.stringify(data)
+                body:JSON.stringify({email, password})
             });
-            const responseData = await res.json();
-            idFunc(responseData.id);
+            const id = await res1.json();
+            console.log(id);
+            idFunc(id);
+            logFunc(true);
+            const res2 = await fetch(`http://localhost:8080/api/loginAnswers/${id}`, {
+                method:"GET",
+                headers:{ "Content-Type": "application/json" }
+            });
+            const responseData2 = await res2.json();
+            dataFunc((prev) => ({
+                ...prev,
+                ...responseData2,
+                id: id
+            }));
+
         } catch (error) {
-            console.log("ERROR SENDING ACCOUNT DATA");
+            console.log("ERROR SENDING ACCOUNT DATA: ", error);
         }
         pageSetter(1);
     }
@@ -31,6 +42,7 @@ export default function Login({pageSetter, idFunc}) {
             <input name="password" value={password} type="password" minLength="9" maxLength="20" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}></input>
             <br/>
             <button onClick={handleSubmit}>Enter</button>
+            <button onClick={() => pageSetter(0)}>Back</button>
         </div>
         
     )
