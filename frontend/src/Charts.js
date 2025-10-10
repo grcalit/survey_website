@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, Label
 } from "recharts";
+import './Charts.css';
 
 export default function Charts({pageSetter, isLoggedIn}) {
     const [data, setData] = useState([]);
@@ -18,8 +19,8 @@ export default function Charts({pageSetter, isLoggedIn}) {
         
 
     return (
-        <div>
-            <div style={{ width: "600px", margin: "0 auto" }}>
+        <div className="histogram-container">
+            <div className="histogram-chart-wrapper">
             <h2>Sleep Hours Histogram</h2>
             <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 10 }}>
@@ -35,7 +36,6 @@ export default function Charts({pageSetter, isLoggedIn}) {
         </div>
             {!isLoggedIn && <button onClick={() => pageSetter(3)}>Sign In</button>}
         </div>
-        
     )
     
 
