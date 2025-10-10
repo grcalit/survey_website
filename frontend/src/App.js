@@ -5,6 +5,7 @@ import Login from './Login.js';
 import SignIn from './SignIn.js';
 import Questions from './Questions.js';
 import topics from './questionInfo.js';
+import Charts from './Charts.js'
 
 function App() {
   const [pageNum, setPageNum] = useState(0);

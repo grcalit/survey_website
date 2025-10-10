@@ -19,7 +19,7 @@ export default function BeginSurvey({pageSetter, idFunc}) {
     }
 
     return (
-    <div class="survey-container">
+    <div className="survey-container">
         <button onClick={() => pageSetter(4)}>Login</button>
         <p>Welcome to the Lifestyle Survey</p>
         <p>Press the button to begin!</p>

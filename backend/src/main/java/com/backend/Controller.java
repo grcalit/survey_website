@@ -149,10 +149,9 @@ public class Controller {
     public ResponseEntity<Integer> getAccountId(@RequestBody Account account) {
         Account foundAccount = accountService.getAccount(account);
         if (foundAccount == null) {
-            return null;
+            return ResponseEntity.status(400).body(null);
         }
         int id = foundAccount.getId();
-        
         return ResponseEntity.ok(id);
     }
 
@@ -165,6 +164,8 @@ public class Controller {
         Map<String, Map<String, String>> answers = new HashMap<>();
         answers.put("Sleeping", service1.getAnswerAsJSON(id));
         answers.put("Exercise", service2.getAnswerAsJSON(id));
+        answers.put("Work", service3.getAnswerAsJSON(id));
+        answers.put("Hobby/Leisure", service4.getAnswerAsJSON(id));
         return ResponseEntity.ok(answers);
     }
 
@@ -186,10 +187,17 @@ public class Controller {
         return ResponseEntity.ok(deletedId);
     }
 
-    @GetMapping("/topic1/charts")
-    public ResponseEntity<Map<String, List<String>>> gatherAnswers1() {
+    @GetMapping("/topic1/charts/catgorical")
+    public ResponseEntity<Map<String, List<String>>> gatherCategoricalAnswers1() {
         Map<String, List<String>> answers = new HashMap<>();
-        answers = service1.getAllAnswers();
+        answers = service1.getAllCategoricalAnswers();
+        return ResponseEntity.ok(answers);
+    }
+
+    @GetMapping("/topic1/charts/numerical")
+    public ResponseEntity<Map<String, List<Integer>>> gatherNumericAnswers1() {
+        Map<String, List<Integer>> answers = new HashMap<>();
+        answers = service1.getAllNumericAnswers();
         return ResponseEntity.ok(answers);
     }
 

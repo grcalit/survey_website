@@ -7,7 +7,7 @@ import './Questions.css'
 export default function Questions({pageSetter, accountId, data, dataFunc}) {
     const [topicNum, setTopicNum] = useState(0);
     const [nextText, setNextText] = useState("Next");
-    const topicNames = ["Sleeping", "Exercise"];
+    const topicNames = ["Sleeping", "Exercise", "Work", "Hobby/Leisure"];
 
     const handleSubmission = async() => {
         try {

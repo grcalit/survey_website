@@ -56,14 +56,20 @@ public class Service1 {
         return null;
     }
 
-    public Map<String, List<String>> getAllAnswers() {
+    public Map<String, List<String>> getAllCategoricalAnswers() {
         List<Topic1Entity> all = topic1Repository.findAll();
         Map<String, List<String>> data = new HashMap<>();
-        data.put("q1", all.stream().map(Topic1Entity::getQ1).toList());
-        data.put("q2", all.stream().map(Topic1Entity::getQ2).toList());
         data.put("q3", all.stream().map(Topic1Entity::getQ3).toList());
         data.put("q4", all.stream().map(Topic1Entity::getQ4).toList());
         data.put("q5", all.stream().map(Topic1Entity::getQ5).toList());
+        return data;
+    }
+
+    public Map<String, List<Integer>> getAllNumericAnswers() {
+        List<Topic1Entity> all = topic1Repository.findAll();
+        Map<String, List<Integer>> data = new HashMap<>();
+        data.put("q1", all.stream().map(Topic1Entity::getQ1).map(Integer::parseInt).toList());
+        data.put("q2", all.stream().map(Topic1Entity::getQ2).map(Integer::parseInt).toList());
         return data;
     }
 }

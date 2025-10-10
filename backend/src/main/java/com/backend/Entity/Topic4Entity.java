@@ -6,10 +6,6 @@ import jakarta.persistence.*;
 @Table(name="topic4")
 public class Topic4Entity {
     @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(nullable = false)
     private int accountId;
 
     @Column(nullable = false)
@@ -37,9 +33,6 @@ public class Topic4Entity {
         this.q4 = q4;
         this.q5 = q5;
     }
-
-    public Long getId() {return id;}
-    public void setId(Long id) {this.id = id;}
 
     public int getAccountId() {return accountId;}
     public void setAccountId(int accountId) {this.accountId = accountId;}

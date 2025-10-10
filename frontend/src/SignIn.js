@@ -17,7 +17,7 @@ export default function SignIn({pageSetter, accountId}) {
         } catch (error) {
             console.log("ERROR SENDING ACCOUNT DATA: ", error);
         }
-        pageSetter(1);
+        pageSetter(2);
     }
 
     return (

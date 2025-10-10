@@ -6,7 +6,7 @@ const topics =
         "type": "text"},
 
         {"id": "q2",
-        "question": "How many nights perweek do you sleep at least 7 hours?",
+        "question": "How many nights per week do you sleep at least 7 hours?",
         "type": "text"},
 
         {"id": "q3",
@@ -78,6 +78,7 @@ const topics =
 
         {"id": "q4",
         "question": "How would you rate your daily stress level?",
+        "type": "select",
         "options": ["Very low", "Low", "Moderate", "High", "Very High"]
         }, 
 
@@ -112,6 +113,7 @@ const topics =
 
         {"id": "q4",
         "question": "How often do you spend time on your hobbies?",
+        "type": "select",
         "options": ["Daily", "A few times a week", "Once a week", "A few times a month", "Rarely"]
         }, 
 
