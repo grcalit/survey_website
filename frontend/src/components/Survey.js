@@ -1,4 +1,4 @@
-import topics from "./questionInfo.js";
+import topics from "../questionInfo.js";
 
 export default function Survey({topicNum, data, dataFunc}) {
     const topicName = topics[topicNum].title;
