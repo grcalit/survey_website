@@ -18,7 +18,7 @@ const topics =
         {"id": "q4",
         "question": "How often do you wake up feeling rested?",
         "type": "select",
-        "options": ["Always", "Often", "Sometimes", "Rareky", "Never"]
+        "options": ["Always", "Often", "Sometimes", "Rarely", "Never"]
         }, 
 
         {"id": "q5",
