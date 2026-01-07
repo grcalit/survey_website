@@ -1,4 +1,4 @@
-import './BeginSurvey.css';
+import '../style/BeginSurvey.css';
 
 export default function BeginSurvey({pageSetter, idFunc}) {
 

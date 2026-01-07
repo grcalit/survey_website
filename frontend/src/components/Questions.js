@@ -1,8 +1,8 @@
 import {useState} from 'react';
-import topics from './questionInfo.js';
+import topics from '../questionInfo.js';
 import Survey from './Survey.js';
 import TopBar from './TopBar.js';
-import './Questions.css'
+import '../style/Questions.css'
 
 export default function Questions({pageSetter, accountId, data, dataFunc}) {
     const [topicNum, setTopicNum] = useState(0);

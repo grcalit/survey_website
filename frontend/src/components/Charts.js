@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, Label
 } from "recharts";
-import './Charts.css';
+import '../style/Charts.css';
 
 export default function Charts({pageSetter, isLoggedIn}) {
     const [data, setData] = useState([]);
@@ -43,8 +43,8 @@ export default function Charts({pageSetter, isLoggedIn}) {
                         <XAxis datakey="name"/>
                         <YAxis/>
                         <Tooltip/>
-                        <Legened/>
-                        <Bar dataKey="amount" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue"/>}/>
+                        
+                        <Bar dataKey="amount" fill="#8884d8"/>
                     </BarChart>
                 </ResponsiveContainer>
             </div>
